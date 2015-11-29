@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
+  devise_for :students
   devise_for :instructors
-root 'welcome#index'
+  root 'welcome#index'
   
   get 'welcome/index'
+   get 'welcome/sign_up', as: 'sign_up'
+   get 'welcome/login', as: 'login'
 
   get 'static_pages/home'
 
