@@ -4,7 +4,7 @@
 <ul>
 <% @teams.each do |team| %>
 
-<li><%= team.teamName %></li>
+<li><%=link_to(team.teamName, team_path(team)) %></li>
 
 <% end %>
 

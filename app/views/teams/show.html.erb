@@ -1,1 +1,10 @@
 <h3><%= @team.teamName %></h3>
+
+<%= link_to "Join team", join_team_path, :method => :post %>
+
+<h3>Current members(<%= @team_members.count %>)</h3>
+
+<% @team_members.each do |member|%>
+
+<p>Student email:<%= member.email %>
+	<% end %>

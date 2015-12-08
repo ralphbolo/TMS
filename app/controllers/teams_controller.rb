@@ -20,6 +20,21 @@ class TeamsController < ApplicationController
 
 def show
 	@team = Team.find(params[:id])
+	@team_members = @team.students
+end
+
+def join
+	@student = current_student
+	@team = Team.find(params[:id])
+	@student.team_id = @team.id
+
+	if @student.save
+    flash[:notice] = "request sent"
+    redirect_to root_path
+  else
+    flash[:error] = "Unable to join."
+    redirect_to root_path
+  end
 end
 
 	private

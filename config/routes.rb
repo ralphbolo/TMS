@@ -10,7 +10,11 @@ Rails.application.routes.draw do
 
   get 'static_pages/home'
 
-  resources :teams
+  resources :teams do
+    post 'join', on: :member
+  end
+
+ #get '/patients/:id', to: 'patients#show', as: 'patient'
 
 
   # The priority is based upon order of creation: first created -> highest priority.
