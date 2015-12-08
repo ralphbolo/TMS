@@ -9,8 +9,9 @@ class TeamsController < ApplicationController
 	end
 
 	def create
+		@student = current_student
 		@team = Team.create(team_params)
-
+		@team.student_id = @student.id
 		if @team.save
 			redirect_to @team
 		else
@@ -21,6 +22,7 @@ class TeamsController < ApplicationController
 def show
 	@team = Team.find(params[:id])
 	@team_members = @team.students
+	@liason = Student.find(@team.student_id)
 end
 
 def join
@@ -30,12 +32,21 @@ def join
 
 	if @student.save
     flash[:notice] = "request sent"
-    redirect_to root_path
+    redirect_to @team
   else
     flash[:error] = "Unable to join."
     redirect_to root_path
   end
 end
+
+# def request
+# 	#@team.Team.find(params[:id])
+# end
+
+def accept
+	
+end
+
 
 	private
 
