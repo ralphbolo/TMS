@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Min:</strong>
+  <%= @team_parameter.min %>
+</p>
+
+<p>
+  <strong>Max:</strong>
+  <%= @team_parameter.max %>
+</p>
+
+<p>
+  <strong>Deadline:</strong>
+  <%= @team_parameter.deadline %>
+</p>
+
+<p>
+  <strong>Coursecode:</strong>
+  <%= @team_parameter.courseCode %>
+</p>
+
+<%= link_to 'Edit', edit_team_parameter_path(@team_parameter) %> |
+<%= link_to 'Back', team_parameters_path %>

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :team_parameters
   devise_for :students
   devise_for :instructors
   root 'welcome#index'

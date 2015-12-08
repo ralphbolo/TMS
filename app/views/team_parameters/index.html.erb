@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Team Parameters</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Min</th>
+      <th>Max</th>
+      <th>Deadline</th>
+      <th>Coursecode</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @team_parameters.each do |team_parameter| %>
+      <tr>
+        <td><%= team_parameter.min %></td>
+        <td><%= team_parameter.max %></td>
+        <td><%= team_parameter.deadline %></td>
+        <td><%= team_parameter.courseCode %></td>
+        <td><%= link_to 'Show', team_parameter %></td>
+        <td><%= link_to 'Edit', edit_team_parameter_path(team_parameter) %></td>
+        <td><%= link_to 'Destroy', team_parameter, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Team parameter', new_team_parameter_path %>
