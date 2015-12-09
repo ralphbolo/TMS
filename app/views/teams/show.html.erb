@@ -1,14 +1,36 @@
+<script>
+	$('document').ready(function(){
+		var user = $('.navbar-default .navbar-nav > li > a').first().text();
+
+		var $members = $('.member');
+		var membersArray = [];
+		$members.each(function(){
+			membersArray.push($(this).text());
+		});
+
+		$('#join-btn').click(function(e){
+			if(membersArray.indexOf(user) > -1) {
+				alert('You are already a member or awaiting member of this team.');
+				return false;
+			}
+			else{
+				return true;
+			}
+
+		});
+	});
+</script>
 <h3><%= @team.teamName %></h3>
 
-<%= link_to "Join team", join_team_path, :method => :post %>
+<%= link_to "Join team", join_team_path, id: "join-btn", :method => :post %>
 
 <h3>Current members(<%= @team_members.count + 1 %>)</h3>
 
-<p>Liason: <%= @liason.email %></p>
+<p>Liason: <span  id="liaisonMember" class="member"><%= @liason.email %></span></p>
 
 <% @team_members.each do |member|%>
 
-<p>Student email:<%= member.email %> <% if member.hasTeam == nil%>(pending)<% end %></p>
+<p>Student email:<span class="member"><%= member.email %></span> <% if member.hasTeam == nil%>(pending)<% end %></p>
 
 	<% end %>
 
@@ -17,7 +39,7 @@
 		<h3>Pending members</h3>
 			<% @pending_members.each do |pending_member|%>
 				<% if current_student != @team.student_id %>
-					<p><%= pending_member.email %><%= link_to "Accept", accept_team_path(pending_member), :method => :post%></p>
+					<p class="pendingMember"><%= pending_member.email %><%= link_to "Accept", accept_team_path(pending_member), :method => :post%></p>
 				<% end %>
 			<% end %>
 	<% end %>
@@ -33,4 +55,3 @@
 			<% end %>
 
 <% end %>
-
