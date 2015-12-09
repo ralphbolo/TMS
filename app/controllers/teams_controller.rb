@@ -43,7 +43,7 @@ def show
 	@team = Team.find(params[:id])
 	@team_members = @team.students
 	@liason = Student.find(@team.student_id)
-
+	@team_parameter = TeamParameter.find(@team.team_parameter_id)
 	@pending_members = @team.students.where(hasTeam: nil)
 
 end
@@ -84,6 +84,6 @@ end
 	private
 
 	def team_params
-		params.require(:team).permit(:teamName, :student_id)
+		params.require(:team).permit(:teamName, :student_id, :team_parameter_id)
 	end
 end

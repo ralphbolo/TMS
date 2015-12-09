@@ -20,6 +20,12 @@
 
 				<% end %>
 
+				<div class="field form-group">
+				  <p>Team parameter</p>
+				 <%= f.collection_select(:team_parameter_id, TeamParameter.all, :id, :courseCode) %>
+				</div>
+
+
 
 				<%= f.submit %>
 				<% end %>
