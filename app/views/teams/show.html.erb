@@ -16,14 +16,14 @@
 			else{
 				return true;
 			}
-
 		});
 	});
 </script>
 <h3><%= @team.teamName %></h3>
 
+<% if student_signed_in? %>
 <%= link_to "Join team", join_team_path, id: "join-btn", :method => :post %>
-
+<%end%>
 <h3>Current members(<%= @team_members.count + 1 %>)</h3>
 
 <p>Liason: <span  id="liaisonMember" class="member"><%= @liason.email %></span></p>
