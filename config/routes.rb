@@ -15,6 +15,7 @@ Rails.application.routes.draw do
 
   resources :teams do
     post 'join', on: :member
+    post 'accept', on: :member
   end
 
  #get '/patients/:id', to: 'patients#show', as: 'patient'

@@ -23,6 +23,9 @@ def show
 	@team = Team.find(params[:id])
 	@team_members = @team.students
 	@liason = Student.find(@team.student_id)
+
+	@pending_members = @team.students.where(hasTeam: nil)
+
 end
 
 def join
@@ -44,7 +47,17 @@ end
 # end
 
 def accept
-	
+
+	@student = Student.find(params[:id])
+	@student.hasTeam = true
+
+	if @student.save
+    flash[:notice] = "request accepted"
+    redirect_to teams_path
+  else
+    flash[:error] = "Unable to join."
+    redirect_to root_path
+  end
 end
 
 
