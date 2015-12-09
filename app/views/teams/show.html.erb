@@ -13,16 +13,24 @@
 	<% end %>
 
 <% if student_signed_in? %>
-<% if current_student.id == @team.student_id %>
-<h3>Pending members</h3>
-	<% @pending_members.each do |pending_member|%>
-		<% if current_student != @team.student_id %>
-				<p><%= pending_member.email %><%= link_to "Accept", accept_team_path(pending_member), :method => :post%></p>
+	<% if current_student.id == @team.student_id %>
+		<h3>Pending members</h3>
+			<% @pending_members.each do |pending_member|%>
+				<% if current_student != @team.student_id %>
+					<p><%= pending_member.email %><%= link_to "Accept", accept_team_path(pending_member), :method => :post%></p>
+				<% end %>
 			<% end %>
 	<% end %>
 <% end %>
 
+<% if instructor_signed_in? %>
+
+		<h3>Pending members</h3>
+			<% @pending_members.each do |pending_member|%>
+				<% if current_student != @team.student_id %>
+					<p><%= pending_member.email %><%= link_to "Accept", accept_team_path(pending_member), :method => :post%></p>
+				<% end %>
+			<% end %>
 
 <% end %>
-
 
