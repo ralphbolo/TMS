@@ -43,6 +43,7 @@
   <%= link_to('Logout', destroy_instructor_session_path, :method => :delete) %>        
   </li>
   <li><%= link_to('Create a team',new_team_path)%></li>
+  <li><%= link_to('Create a parameter',new_team_parameter_path)%></li>
     <li><%= link_to('View all teams',teams_path)%></li>
   <% elsif student_signed_in?%>
   <li><a><%= current_student.email %></a></li>
