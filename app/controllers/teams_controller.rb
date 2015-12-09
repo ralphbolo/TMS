@@ -5,13 +5,33 @@ class TeamsController < ApplicationController
 		@teams = Team.all
 	end
 	def new
+
 		@team = Team.new
+	end
+
+	def newProf
+		
+		@team = Team.new
+	end
+
+	def createProf
+	
+		@team = Team.create(team_params)
+	
+		if @team.save
+			redirect_to @team
+		else
+			render 'new'
+		end
 	end
 
 	def create
 		@student = current_student
+		@students = Student.all 
 		@team = Team.create(team_params)
-		@team.student_id = @student.id
+		if student_signed_in? 
+			@team.student_id = @student.id
+		end
 		if @team.save
 			redirect_to @team
 		else
@@ -64,6 +84,6 @@ end
 	private
 
 	def team_params
-		params.require(:team).permit(:teamName)
+		params.require(:team).permit(:teamName, :student_id)
 	end
 end

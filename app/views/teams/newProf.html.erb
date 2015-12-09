@@ -11,14 +11,13 @@
 				  <%= f.text_field :teamName, :class => 'form-control' %>
 				</div>
 
-				<% if instructor_signed_in? %>
 				<div class="field form-group">
 				  <p>liason</p>
-				 <%= f.collection_select(:student_id, Student.all, :id, :email) %>
+				  <%= f.collection_select :provider_id, @students, :id, :email, include_blank: true %>
 				</div>
 
 
-				<% end %>
+
 
 
 				<%= f.submit %>

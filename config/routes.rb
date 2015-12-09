@@ -11,8 +11,9 @@ Rails.application.routes.draw do
    get 'welcome/sign_up', as: 'sign_up'
    get 'welcome/login', as: 'login'
 
-  get 'static_pages/home'
-
+  get 'static_pages/home' 
+  get 'team/newProf'=> 'team#newProf'
+   post 'team/newProf'=> 'team#createProf'
   resources :teams do
     post 'join', on: :member
     post 'accept', on: :member
